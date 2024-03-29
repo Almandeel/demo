@@ -27,7 +27,15 @@ class GithubEventFetching implements ShouldQueue
      */
     public function handle(): void
     {
-        $events = Http::get('https://api.github.com/events');
+        /**
+         * @return string
+         */
+        $events = Http::withHeaders([
+            'X-GitHub-Api-Version' => '2022-11-28',
+            'Accept' => 'application/vnd.github+json'
+        ])
+        ->get('https://api.github.com/events')
+        ->body();
 
         event(new SendGithubData($events));
     }

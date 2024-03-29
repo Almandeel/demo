@@ -18,7 +18,7 @@ class SendGithubData
      * Create a new event instance.
      */
     public function __construct(
-        public $githubData
+        public string $githubData
     )
     {
         //
