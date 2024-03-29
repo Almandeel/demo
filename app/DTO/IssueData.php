@@ -6,10 +6,12 @@ use App\Enums\IssueActionType;
 
 class IssueData
 {
-    /**
-     * Create a new class instance.
-     */
     public function __construct(
+        public string $id,
+        public string $number,
+        public string $status,
+        public string $title,
+        public string $url,
         public IssueActionType $action,
     ) {
     }
